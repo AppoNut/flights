@@ -21,7 +21,6 @@ class MainMenuView: UIViewController {
         let MMController: MainMenuController = .init(departureString: departureTextField.text!,
                                                      landingString: landingTextField.text!,
                                                      dateString: flightDatesTextField.text!)
-        //MMController.loadPage()
         MMController.createAndPushData()
     }
     

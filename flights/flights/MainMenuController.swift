@@ -32,75 +32,7 @@ class MainMenuController {
         landing = landingString
         date = dateString
     }
-    
-    /* Unused.
-     * TODO: add correct website parsing
-     */
-    func loadPage () {
-        let url = URL(string: "https://pegasfly.com/Search/SearchResult?q=1000-0-SVOLED20190926LEDSVO20191018-1")
-        //let request = URLRequest(url: url!)
-       //webView.frame = CGRect(x: 0, y: 0, width: 300, height: 700)
-       //webView.load(request)
-        var lightTariffPrice: Int = 0
-        var optimumTariffPrice: Int = 0
-        var premiumTariffPrice: Int = 0
-        
-        do {
-            let myHTMLString = try String(contentsOf: url!)
-            
-            let doc: Document = try SwiftSoup.parse(myHTMLString)
-            let elements = try doc.getAllElements()
-            for item in elements {
-                /*
-                if (item.tagName() == "div") {
-                    print("div: \(try item.className()) id: (\(item.id()))")
-                    if (item.tagName() == "span") {
-                        print("span: \(try item.className()) id: (\(item.id()))")
-                        if (try item.className() == "SearchResult_FlightTitle") {
-                            print("tag content: \(try item.getAllElements())")
-                        }
-                    }
-                }
- */
-                if (item.tagName() == "div") {
-                    print("div: \(try item.className()) id: (\(item.id()))")
-                    /*if (item.tagName() == "span") {
-                        print("span: \(try item.className()) id: (\(item.id()))")
-                        if (try item.className() == "SearchResult_FlightTitle") {
-                            print("tag content: \(try item.getAllElements())")
-                        }
-                    }*/
-                }
-                              
-                //print("item.className(): [\(try item.className())]")
-                let classNameString = try item.className()
-                let str = classNameString.components(separatedBy: " ")
-                print("(str: [\(str)])")
-                for i in 0..<str.count {
-                    if (str[i] == "SearchResult_TableHeader-FareName") {
-                        print("------> hello")
-                    }
-                    if (str[i] == "SearchResult_DateContainer-Active") {
-                        print("====== here we are =========")
-                    }
-                }
-
-                let text = try item.text()
-                let html = try item.outerHtml()
-                if (html == "<span class=\"SearchResult_FlightTitle\">") {
-                    print("text: \(text) html:\(html)")
-                }
-                
-            }
-
-        } catch let error {
-            print("Error: \(error)")
-        }
-
-    }
-    
-    
-    
+ 
     /* Create test dataset while website parsing is not ready */
     func fillTestArrays() {
         testFlightNum.append("S7 182")
