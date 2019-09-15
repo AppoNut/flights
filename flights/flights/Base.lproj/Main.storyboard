@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Vk Authorize View-->
         <scene sceneID="i4o-fE-nTt">
             <objects>
-                <viewController storyboardIdentifier="authorizeView" id="KMr-c4-66S" customClass="ViewController" customModule="flights" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="authorizeView" id="KMr-c4-66S" customClass="VkAuthorizeView" customModule="flights" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yZI-hJ-SVl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,6 @@
                                 </state>
                                 <connections>
                                     <action selector="vkSignInButton:" destination="KMr-c4-66S" eventType="touchUpInside" id="qF3-L7-cvc"/>
-                                    <segue destination="AYD-is-CLK" kind="show" id="p9R-5g-4a0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -47,6 +46,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Iy-uR-irb"/>
                     </view>
+                    <connections>
+                        <segue destination="AYD-is-CLK" kind="show" identifier="toMainView" id="u6f-aP-FPS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VO6-50-Nd8" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,7 +93,7 @@
                                 </state>
                                 <connections>
                                     <action selector="findFlightButton:" destination="Ihp-yd-lKu" eventType="touchUpInside" id="6Eh-aq-FmD"/>
-                                    <segue destination="Jnc-nt-11p" kind="show" id="2aM-y9-B5I"/>
+                                    <segue destination="Jnc-nt-11p" kind="show" identifier="" id="2aM-y9-B5I"/>
                                 </connections>
                             </button>
                         </subviews>
