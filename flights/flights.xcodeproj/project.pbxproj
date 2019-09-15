@@ -9,14 +9,16 @@
 /* Begin PBXBuildFile section */
 		3F559A6FC76BD0F799983721 /* Pods_flights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F21B45B45CD8017C876197D /* Pods_flights.framework */; };
 		EC43660A2322A37700845A64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4366092322A37700845A64 /* AppDelegate.swift */; };
-		EC43660C2322A37700845A64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC43660B2322A37700845A64 /* ViewController.swift */; };
+		EC43660C2322A37700845A64 /* VkAuthorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC43660B2322A37700845A64 /* VkAuthorizeView.swift */; };
 		EC43660F2322A37700845A64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC43660D2322A37700845A64 /* Main.storyboard */; };
 		EC4366112322A37700845A64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC4366102322A37700845A64 /* Assets.xcassets */; };
 		EC4366142322A37700845A64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC4366122322A37700845A64 /* LaunchScreen.storyboard */; };
-		EC43661C2322BD7B00845A64 /* VkApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC43661B2322BD7B00845A64 /* VkApi.swift */; };
+		EC43661C2322BD7B00845A64 /* VkAuthorizeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC43661B2322BD7B00845A64 /* VkAuthorizeController.swift */; };
 		EC43661E23239F3600845A64 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC43661D23239F3600845A64 /* MainMenuView.swift */; };
 		EC4366202323A97F00845A64 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC43661F2323A97F00845A64 /* MainMenuController.swift */; };
 		EC4366222324DB2000845A64 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4366212324DB2000845A64 /* Flight.swift */; };
+		ECD4581D232B8B4D00FDCA9D /* VkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4581C232B8B4D00FDCA9D /* VkDelegate.swift */; };
+		ECD4581F232E68F200FDCA9D /* VkRelatedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD4581E232E68F200FDCA9D /* VkRelatedData.swift */; };
 		ECE0C9E6232518730097E876 /* DisplayDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0C9E5232518730097E876 /* DisplayDataView.swift */; };
 		ECE0C9E8232518AB0097E876 /* DisplayDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0C9E7232518AB0097E876 /* DisplayDataController.swift */; };
 /* End PBXBuildFile section */
@@ -27,15 +29,17 @@
 		E2D58585BC2ED6DB02C43236 /* Pods-flights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flights.release.xcconfig"; path = "Target Support Files/Pods-flights/Pods-flights.release.xcconfig"; sourceTree = "<group>"; };
 		EC4366062322A37700845A64 /* flights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4366092322A37700845A64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EC43660B2322A37700845A64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EC43660B2322A37700845A64 /* VkAuthorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAuthorizeView.swift; sourceTree = "<group>"; };
 		EC43660E2322A37700845A64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC4366102322A37700845A64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC4366132322A37700845A64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EC4366152322A37700845A64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC43661B2322BD7B00845A64 /* VkApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkApi.swift; sourceTree = "<group>"; };
+		EC43661B2322BD7B00845A64 /* VkAuthorizeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAuthorizeController.swift; sourceTree = "<group>"; };
 		EC43661D23239F3600845A64 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		EC43661F2323A97F00845A64 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		EC4366212324DB2000845A64 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		ECD4581C232B8B4D00FDCA9D /* VkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkDelegate.swift; sourceTree = "<group>"; };
+		ECD4581E232E68F200FDCA9D /* VkRelatedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkRelatedData.swift; sourceTree = "<group>"; };
 		ECE0C9E5232518730097E876 /* DisplayDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDataView.swift; sourceTree = "<group>"; };
 		ECE0C9E7232518AB0097E876 /* DisplayDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,17 +95,19 @@
 			isa = PBXGroup;
 			children = (
 				EC4366092322A37700845A64 /* AppDelegate.swift */,
-				EC43660B2322A37700845A64 /* ViewController.swift */,
+				EC43660B2322A37700845A64 /* VkAuthorizeView.swift */,
 				EC43660D2322A37700845A64 /* Main.storyboard */,
 				EC4366102322A37700845A64 /* Assets.xcassets */,
 				EC4366122322A37700845A64 /* LaunchScreen.storyboard */,
 				EC4366152322A37700845A64 /* Info.plist */,
-				EC43661B2322BD7B00845A64 /* VkApi.swift */,
+				EC43661B2322BD7B00845A64 /* VkAuthorizeController.swift */,
 				EC43661D23239F3600845A64 /* MainMenuView.swift */,
 				EC43661F2323A97F00845A64 /* MainMenuController.swift */,
 				EC4366212324DB2000845A64 /* Flight.swift */,
 				ECE0C9E5232518730097E876 /* DisplayDataView.swift */,
 				ECE0C9E7232518AB0097E876 /* DisplayDataController.swift */,
+				ECD4581C232B8B4D00FDCA9D /* VkDelegate.swift */,
+				ECD4581E232E68F200FDCA9D /* VkRelatedData.swift */,
 			);
 			path = flights;
 			sourceTree = "<group>";
@@ -187,7 +193,7 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
-				"${BUILT_PRODUCTS_DIR}/VK-ios-sdk/VK_ios_sdk.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyVK/SwiftyVK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -196,7 +202,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VK_ios_sdk.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyVK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -233,10 +239,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECE0C9E6232518730097E876 /* DisplayDataView.swift in Sources */,
-				EC43660C2322A37700845A64 /* ViewController.swift in Sources */,
+				EC43660C2322A37700845A64 /* VkAuthorizeView.swift in Sources */,
 				ECE0C9E8232518AB0097E876 /* DisplayDataController.swift in Sources */,
-				EC43661C2322BD7B00845A64 /* VkApi.swift in Sources */,
+				EC43661C2322BD7B00845A64 /* VkAuthorizeController.swift in Sources */,
 				EC43661E23239F3600845A64 /* MainMenuView.swift in Sources */,
+				ECD4581D232B8B4D00FDCA9D /* VkDelegate.swift in Sources */,
+				ECD4581F232E68F200FDCA9D /* VkRelatedData.swift in Sources */,
 				EC4366222324DB2000845A64 /* Flight.swift in Sources */,
 				EC43660A2322A37700845A64 /* AppDelegate.swift in Sources */,
 				EC4366202323A97F00845A64 /* MainMenuController.swift in Sources */,
