@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+// Model
 class FlightObject: Object {
     @objc dynamic var flightIndex: String = ""
     @objc dynamic var aiportSource: String = ""
@@ -19,10 +20,10 @@ class FlightObject: Object {
     
 }
 
+// Class for managing database
 class Flight {
     private var realm: Realm?
     
-    //var id: Int64 = 0
     var flightIndex: String = ""
     var aiportSource: String = ""
     var airportDest: String = ""
@@ -48,12 +49,12 @@ class Flight {
     }
     
     func createBase() {
-        do {
-            realm = try! Realm()
-            print(Realm.Configuration.defaultConfiguration.fileURL!)
-        } catch let error {
-            print("Realm error: \(error)")
-        }
+        realm = try! Realm()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
+    }
+    
+    func getBase() -> Realm {
+        return realm!
     }
     
     func makeFlightbyName() -> FlightObject {
@@ -76,10 +77,9 @@ class Flight {
         }
     }
     
-    func loadFromBase() {
+    func loadFromBase(){
         if realm != nil {
             let result = realm?.objects(FlightObject.self)
-            print("result: \(result![0].departureTime)")
         }
     }
     
@@ -88,11 +88,11 @@ class Flight {
                                                                     departureTime:String,
                                                                     landingTime:String,
                                                                     price:String)]) {
+        let realm = try! Realm()
         if realm != nil {
-            let result = realm?.objects(FlightObject.self)
-            for item in result! {
+            let result = realm.objects(FlightObject.self)
+            for item in result {
                 if flightName == item.flightIndex {
-                    print("object found \(item.airportDest)")
                     array.append((item.aiportSource,
                                   item.airportDest,
                                   item.departureTime,
@@ -100,22 +100,33 @@ class Flight {
                                   item.price))
                 }
             }
-        } else {
-            print("rea;m object is nil")
         }
     }
     
-    func setObjectsFilter() {
-        
-    }
-    
-    func getRealmObjectsCount() {
-        // if object == filter. To get only correct rows
-    }
-    
-    func clearDataBase() {
+    func getAllFromBase(array: inout [(flightIndex:String,
+                                       aiportSource:String,
+                                       airportDest:String,
+                                       departureTime:String,
+                                       landingTime:String,
+                                       price:String)]) {
+        let realm = try! Realm()
         if realm != nil {
-            realm?.deleteAll()
+            let result = realm.objects(FlightObject.self)
+            for item in result {
+                array.append((item.flightIndex,
+                              item.aiportSource,
+                              item.airportDest,
+                              item.departureTime,
+                              item.landingTime,
+                              item.price))
+            }
+        }
+    }
+
+    func clearDataBase() {
+        let realm = try! Realm()
+        if realm != nil {
+            realm.deleteAll()
         }
     }
     

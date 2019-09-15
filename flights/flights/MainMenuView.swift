@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import WebKit
 
 class MainMenuView: UIViewController {
     
@@ -19,17 +18,11 @@ class MainMenuView: UIViewController {
     private var datePicker: UIDatePicker?
     
     @IBAction func findFlightButton(_ sender: Any) {
-        var MMController: MainMenuController = .init(departureString: departureTextField.text!, landingString: landingTextField.text!, dateString: flightDatesTextField.text!)
-        MMController.loadPage()
-        var localWebview: WKWebView = MMController.getWebView()
-        view.addSubview(localWebview)
-        print("something happened")
-        
-        MMController.getWebData()
-        
-        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "displayDataStoryboard"))!
-        self.present(vc, animated: true, completion: nil)
-        
+        let MMController: MainMenuController = .init(departureString: departureTextField.text!,
+                                                     landingString: landingTextField.text!,
+                                                     dateString: flightDatesTextField.text!)
+        //MMController.loadPage()
+        MMController.createAndPushData()
     }
     
     override func viewDidLoad() {
@@ -37,14 +30,15 @@ class MainMenuView: UIViewController {
         
         datePicker = UIDatePicker.init()
         datePicker?.datePickerMode = .date
-        datePicker?.addTarget(self, action: #selector(MainMenuView.dateChanged(datePicker:)), for: .valueChanged)
+        datePicker?.addTarget(self,
+                              action: #selector(MainMenuView.dateChanged(datePicker:)),
+                              for: .valueChanged)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MainMenuView.tapped(gestureRecognizer:)))
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(MainMenuView.tapped(gestureRecognizer:)))
         
         view.addGestureRecognizer(tapGesture)
-        
         flightDatesTextField.inputView = datePicker
-        // Do any additional setup after loading the view.
     }
     
     @objc func tapped(gestureRecognizer: UITapGestureRecognizer) {

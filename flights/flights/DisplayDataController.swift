@@ -12,27 +12,22 @@ class DisplayDataController {
     var flight: Flight = .init()
     
     func getDbContent() -> [String] {
-        var array = [(aiportSource:String,
+        var array = [(flightIndex:String,
+                      aiportSource:String,
                       airportDest:String,
                       departureTime:String,
                       landingTime:String,
                       price:String)]()
-        flight.getFromBaseByFlightName(flightName: "S7 182", array: &array)
-        
-        if array.count != 0 {
-            print("count: \(array.count)")
-        } else {
-            print("array count is zero")
-        }
+
+        flight.getAllFromBase(array: &array)
 
         var stringArray = [String]()
         for i in 0..<array.count {
-            stringArray.append("S7 182 " + array[i].aiportSource + " " +
+            stringArray.append(array[i].flightIndex + " " + array[i].aiportSource + " " +
                                 array[i].airportDest + " " + array[i].departureTime + " " +
                                 array[i].landingTime + " " + array[i].price)
         }
         return stringArray
     }
 
-    //flight
 }
