@@ -20,9 +20,8 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>vk</string>
-		<string>vk-share</string>
-		<string>vkauthorize</string>
+        <string>vkauthorize</string>
+        <string>vkAPP_ID_HERE</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
