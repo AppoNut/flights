@@ -13,6 +13,12 @@ import SwiftyVK
 class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, SwiftyVKSessionDelegate {
     
     @IBOutlet weak var displayDataTableView: UITableView!
+    
+    var departureText: String = ""
+    var landingText: String = ""
+    var flightDatesText: String = ""
+    var flightBackDatesText: String = ""
+    
     // need to get rowsCount from realm base
     var rowsCount: Int = 1
     var DDController: DisplayDataController = DisplayDataController()
@@ -35,11 +41,90 @@ class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         super.viewDidLoad()
         navigationItem.title = "Flights info"
+        self.showSpinner(onView: self.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
         rowsCount = dataToShow.count
+        print("dataToShow [\(dataToShow)] rowsCount [\(rowsCount)]")
+        
+        print("viewWillAppear \(hideSpinner)")
+        print("departureText [\(departureText)] landingText [\(landingText)] flightDatesText [\(flightDatesText)] flightBackDatesText [\(flightBackDatesText)]")
+        
+        let MMController: MainMenuController = .init(departureString: departureText,
+                                                     landingString: landingText,
+                                                     dateString: flightDatesText)
+        MMController.passBeginEndDate(begin: flightDatesText,
+                                      end: flightBackDatesText)
+
+        MMController.getIataAirportCodeFromCityName(departure: departureText,
+                                                    landing: landingText,
+                                                    callback: { src, dst in
+                                                        print("1 wat \(src) \(dst)")
+                                                        MMController.loadPage(src: src, dst: dst)
+                                                        print("CREATE AND PUSH DATA from display data view")
+                                                        MMController.createAndPushData()
+                                                        print("1 FINAL CALLBACK")
+                                                        self.dataToShow = self.DDController.getDbContent()
+                                                        print("qeq [\(self.dataToShow)] [\(self.dataToShow.count)]")
+                                                        self.rowsCount = self.dataToShow.count
+                                                        //self.rowsCount = 0
+                                                        DispatchQueue.main.async {
+                                                            self.removeSpinner()
+                                                            if self.rowsCount == 0 {
+                                                                self.noDataFoundAlert()
+                                                            }
+                                                            print("reloadData")
+                                                            self.displayDataTableView.reloadData()
+                                                            print("1 remove spinner from callback")
+                                                            self.displayDataTableView.beginUpdates()
+                                                            self.displayDataTableView.endUpdates()
+                                                            self.displayDataTableView.reloadData()
+                                                        }
+                                                    }
+        )
+    }
+    
+    var vSpinner: UIView?
+    var hideSpinner: Bool = false
+    
+    func showSpinner(onView: UIView) {
+        let spinner = UIView.init(frame: onView.bounds)
+        spinner.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinner.center
+        
+        DispatchQueue.main.async {
+            spinner.addSubview(ai)
+            onView.addSubview(spinner)
+        }
+        vSpinner = spinner
+    }
+    
+    func getSpinner () -> UIView {
+        return vSpinner!
+    }
+    
+    func removeSpinner() {
+        print("so here we are removeSpinner")
+        DispatchQueue.main.async {
+            print("removeSpinner removeFromSuperview")
+            self.vSpinner?.removeFromSuperview()
+            self.vSpinner = nil
+            self.displayDataTableView.reloadData()
+        }
+        print("removeSpinner end")
+    }
+    
+    func removeSpinnerFromView(innerView: UIView) {
+        print("so here we are removeSpinnerFromView")
+        DispatchQueue.main.async {
+            print("removeSpinnerFromView removeFromSuperview")
+            innerView.removeFromSuperview()
+        }
+        print("removeSpinnerFromView end")
     }
     
     // returns next displaying table row
@@ -83,6 +168,14 @@ class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSou
         default:
             break;
         }
+    }
+    
+    func noDataFoundAlert() {
+        let alert = UIAlertController(title: "Notification", message: "No data found", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion:  nil)
     }
     
     func sendPostRequest(inputText: String) {

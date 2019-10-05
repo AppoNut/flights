@@ -12,6 +12,7 @@ class DisplayDataController {
     var flight: Flight = .init()
     
     func getDbContent() -> [String] {
+        print("getDbContent")
         var array = [(flightIndex:String,
                       aiportSource:String,
                       airportDest:String,
@@ -27,6 +28,7 @@ class DisplayDataController {
                                 array[i].airportDest + " " + array[i].departureTime + " " +
                                 array[i].landingTime + " " + array[i].price)
         }
+        print("getDbContent stringArray [\(stringArray)]")
         return stringArray
     }
 
