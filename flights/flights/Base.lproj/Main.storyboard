@@ -76,7 +76,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o89-f1-EIq">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата вылета" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o89-f1-EIq">
                                 <rect key="frame" x="101" y="324" width="212" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -84,7 +84,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBN-tJ-lxi">
-                                <rect key="frame" x="101" y="405" width="212" height="42"/>
+                                <rect key="frame" x="101" y="498" width="212" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -93,9 +93,16 @@
                                 </state>
                                 <connections>
                                     <action selector="findFlightButton:" destination="Ihp-yd-lKu" eventType="touchUpInside" id="6Eh-aq-FmD"/>
-                                    <segue destination="Jnc-nt-11p" kind="show" identifier="" id="2aM-y9-B5I"/>
+                                    <segue destination="Jnc-nt-11p" kind="show" identifier="testSegue" id="2aM-y9-B5I"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата прилета" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQF-K1-Fgt">
+                                <rect key="frame" x="101" y="413" width="212" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="am0-vy-2HR"/>
@@ -103,6 +110,7 @@
                     <navigationItem key="navigationItem" id="6kD-uC-eG1"/>
                     <connections>
                         <outlet property="departureTextField" destination="vnj-VB-Btv" id="NuI-2I-7UJ"/>
+                        <outlet property="flightBackDatesTextField" destination="yQF-K1-Fgt" id="8bH-3j-iKJ"/>
                         <outlet property="flightDatesTextField" destination="o89-f1-EIq" id="1uB-Nw-P6J"/>
                         <outlet property="landingTextField" destination="C92-EG-USJ" id="Cip-b3-Vcp"/>
                     </connections>
@@ -143,6 +151,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iu9-XY-2s9"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3az-7Y-X8F"/>
                     <connections>
                         <outlet property="displayDataTableView" destination="1xq-YZ-rA8" id="MYN-68-3hj"/>
                     </connections>
