@@ -18,39 +18,42 @@ class VkAuthorizeView: UIViewController  {
     var vkRelatedData = VkRelatedData.init()
     let vkApiVersion: String = "5.101"
     var readyToShowMenu = false
+    var vkAuthLogging: Logging = Logging()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         /* Load VK view */
         vkObj = VkDelegate.init(self)
+        
+        vkAuthLogging.setLoggingStatus(newStatus: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("readyToShowMenu \(readyToShowMenu)")
+        vkAuthLogging.logToConsole(logMessage: "readyToShowMenu \(readyToShowMenu)")
         if readyToShowMenu == true {
             displayMenuController()
         }
     }
 
     @IBAction func vkSignInButton(_ sender: Any) {
-        //VKAuthController?.logout()
-        print ("vkSignInButton");
+        vkAuthLogging.logToConsole(logMessage: "vkSignInButton")
         vkObj!.vkButtonPressed()
         if let vkWebVIew = vkObj!.getWebViewController() {
-            print("webkit")
+            vkAuthLogging.logToConsole(logMessage: "webkit")
             present(vkWebVIew, animated: true, completion: nil)
         }
-        print("token: [\(String(describing: VKSdk.accessToken()?.accessToken))]")
+        vkAuthLogging.logToConsole(logMessage:
+            "token: [\(String(describing: VKSdk.accessToken()?.accessToken))]")
         if let gotToken = VKSdk.accessToken()?.accessToken {
             self.vkRelatedData.setToken(value: "\(gotToken)")
-            print("gotToken: [\(gotToken)]")
+            vkAuthLogging.logToConsole(logMessage: "gotToken: [\(gotToken)]")
         }
-        print("vkSignInButton")
+        vkAuthLogging.logToConsole(logMessage: "vkSignInButton")
         displayMenuController()
     }
 
     func displayMenuController() {
-        print("displayMenuController")
+        vkAuthLogging.logToConsole(logMessage: "displayMenuController")
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "toMainView", sender: nil)
         }

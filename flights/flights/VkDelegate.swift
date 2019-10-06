@@ -15,10 +15,13 @@ class VkDelegate:   VkAuthorizeView,
 
     private let APP_ID = ""
     var vkApiView: VkAuthorizeView?
+    var vkDelegateLogging: Logging = Logging()
     
     init (_ controller: VkAuthorizeView) {
         vkApiView = controller
         super.init(nibName: nil, bundle: nil)
+        
+        vkDelegateLogging.setLoggingStatus(newStatus: false)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,7 +29,7 @@ class VkDelegate:   VkAuthorizeView,
     }
     
     func vkButtonPressed(){
-        print ("vkButtonPressed")
+        vkDelegateLogging.logToConsole(logMessage: "vkButtonPressed")
         
         let sdkInstance = VKSdk.initialize(withAppId: APP_ID)
         sdkInstance!.register(self);
@@ -36,66 +39,58 @@ class VkDelegate:   VkAuthorizeView,
         
         self.initWorkingBlock { (finished) -> Void in
             // пользователь авторизован
-            //self.performSegue(withIdentifier: "toMainView", sender: nil)
             if finished == true {
                 DispatchQueue.main.async {
-                    print("OK")
+                    self.vkDelegateLogging.logToConsole(logMessage: "OK")
                     //self.performSegue(withIdentifier: "toMainView", sender: nil)
                 }
             }
-            print("user has been authorized")
+            self.vkDelegateLogging.logToConsole(logMessage: "user has been authorized")
         }
     }
     
     func initWorkingBlock (_ completion: ((Bool) -> Void)!){
-        print ("initWorkingBlock")
+        self.vkDelegateLogging.logToConsole(logMessage: "initWorkingBlock")
         let scope = ["wall"]
         
         VKSdk.wakeUpSession(scope, complete: { (state, error) -> Void in
             if (state == VKAuthorizationState.authorized) {
-                print("Authorized and ready to go")
+                self.vkDelegateLogging.logToConsole(logMessage:
+                    "Authorized and ready to go")
             } else if ((error) != nil) {
-                print("Some error happend, but you may try later: \(error)")
+                self.vkDelegateLogging.logToConsole(logMessage:
+                    "Some error happend, but you may try later: \(error)")
             } else {
                 VKSdk.authorize(scope)
-                print(" is loggedIn:  \(VKSdk.isLoggedIn())")
+                self.vkDelegateLogging.logToConsole(logMessage:
+                    " is loggedIn:  \(VKSdk.isLoggedIn())")
             }
             
             self.vkGetUser()
             completion(true)
-            print("completion VKSdk.wakeUpSession")
+            self.vkDelegateLogging.logToConsole(logMessage:
+                "completion VKSdk.wakeUpSession")
         })
     }
     
     func vkGetUser(){
-        print ("vkGetUser")
+        self.vkDelegateLogging.logToConsole(logMessage: "vkGetUser")
         if VKSdk.isLoggedIn() {
             let userId = VKSdk.accessToken().userId
             self.vkRelatedData.setUserId(value: "\(userId!)")
-            print("\(userId)")
+            self.vkDelegateLogging.logToConsole(logMessage: "\(userId)")
             if (userId != nil) {
                 VKApi.users().get([VK_API_FIELDS:"first_name, last_name",
                                    VK_API_USER_ID: userId!]).execute(resultBlock: { (response) -> Void in
                                     
-                                    print("\n \(response?.parsedModel.fields) \n")
-                                    //var user: VKUser = response?.json as! VKUser
-                                    print("user: \(response?.json)")
-                                    /*do {
-                                     let jsonResponse = try JSONSerialization.jsonObject(with: response, options: [])
-                                     print("jsonResponse: \(jsonResponse)")
-                                     } catch let parsingError {
-                                     print("parsing error: \(parsingError)")
-                                     }*/
-                                    /*if let user = response?.parsedModel.fields[0] != nil {
-                                     print("Пользователь ВК: \(user)")
-                                     }*/
-                                    
+                                    self.vkDelegateLogging.logToConsole(logMessage:
+                                        "\n \(response?.parsedModel.fields) \n")
+                                    self.vkDelegateLogging.logToConsole(logMessage:
+                                        "user: \(response?.json)")
+
                                     self.vkRelatedData.setApiVersion(value: self.vkApiVersion)
-                                    //self.vkRelatedData.setUserId(value: response?.json["user_id"]!)
-                                    //self.vkRelatedData.setToken(value: info["access_token"]!)
-                                    
                                    }, errorBlock: { (error) -> Void in
-                                    print("Error2: \(error)")
+                                        self.vkDelegateLogging.logToConsole(logMessage: "Error2: \(error)")
                                    })
             }
         }
@@ -107,23 +102,22 @@ class VkDelegate:   VkAuthorizeView,
     }
     
     func vkSdkShouldPresent(_ controller: UIViewController!) {
-        print("vkSdkShouldPresent")
+        self.vkDelegateLogging.logToConsole(logMessage: "vkSdkShouldPresent")
         // push safari web view controller manually
         webViewController = controller
-        //present(controller!, animated: true, completion: nil)
     }
     
     func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
-        print("vkSdkNeedCaptchaEnter")
+        self.vkDelegateLogging.logToConsole(logMessage: "vkSdkNeedCaptchaEnter")
     }
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         vkApiView!.readyToShowMenu = true
-        print("vkSdkAccessAuthorizationFinished")
+        self.vkDelegateLogging.logToConsole(logMessage: "vkSdkAccessAuthorizationFinished")
     }
     
     func vkSdkUserAuthorizationFailed() {
-        print("vkSdkUserAuthorizationFailed")
+        self.vkDelegateLogging.logToConsole(logMessage: "vkSdkUserAuthorizationFailed")
     }
     
     func topMostController() -> UIViewController {

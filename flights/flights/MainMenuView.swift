@@ -96,7 +96,6 @@ class MainMenuView: UIViewController {
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
-        //print("firstField \(firstField) second \(secondField)")
         let dateFormatter = DateFormatter.init()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         if firstField == true {
@@ -106,7 +105,6 @@ class MainMenuView: UIViewController {
             flightBackDatesTextField.text! = dateFormatter.string(from: datePicker.date)
             secondField = false
         }
-        //print("date: \(datePicker.date) dateFormatter: \(dateFormatter.string(from: datePicker.date))")
         view.endEditing(true)
     }
 
@@ -116,10 +114,8 @@ extension MainMenuView: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == flightDatesTextField {
-            //print("flightDatesTextField")
             firstField = true
         } else if textField == flightBackDatesTextField {
-            //print("flightBackDatesTextField")
             secondField = true
         }
     }

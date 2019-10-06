@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F559A6FC76BD0F799983721 /* Pods_flights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F21B45B45CD8017C876197D /* Pods_flights.framework */; };
+		EC2D7698234A21B20041BDD7 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2D7697234A21B20041BDD7 /* Logging.swift */; };
 		EC43660A2322A37700845A64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4366092322A37700845A64 /* AppDelegate.swift */; };
 		EC43660C2322A37700845A64 /* VkAuthorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC43660B2322A37700845A64 /* VkAuthorizeView.swift */; };
 		EC43660F2322A37700845A64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC43660D2322A37700845A64 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		2F21B45B45CD8017C876197D /* Pods_flights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_flights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BF3BA8FA4C1FFBD68F3901 /* Pods-flights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flights.debug.xcconfig"; path = "Target Support Files/Pods-flights/Pods-flights.debug.xcconfig"; sourceTree = "<group>"; };
 		E2D58585BC2ED6DB02C43236 /* Pods-flights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-flights.release.xcconfig"; path = "Target Support Files/Pods-flights/Pods-flights.release.xcconfig"; sourceTree = "<group>"; };
+		EC2D7697234A21B20041BDD7 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		EC4366062322A37700845A64 /* flights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4366092322A37700845A64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC43660B2322A37700845A64 /* VkAuthorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAuthorizeView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				ECE0C9E7232518AB0097E876 /* DisplayDataController.swift */,
 				ECD4581C232B8B4D00FDCA9D /* VkDelegate.swift */,
 				ECD4581E232E68F200FDCA9D /* VkRelatedData.swift */,
+				EC2D7697234A21B20041BDD7 /* Logging.swift */,
 			);
 			path = flights;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				ECE0C9E6232518730097E876 /* DisplayDataView.swift in Sources */,
 				EC43660C2322A37700845A64 /* VkAuthorizeView.swift in Sources */,
 				ECE0C9E8232518AB0097E876 /* DisplayDataController.swift in Sources */,
+				EC2D7698234A21B20041BDD7 /* Logging.swift in Sources */,
 				EC43661C2322BD7B00845A64 /* VkAuthorizeController.swift in Sources */,
 				EC43661E23239F3600845A64 /* MainMenuView.swift in Sources */,
 				ECD4581D232B8B4D00FDCA9D /* VkDelegate.swift in Sources */,
