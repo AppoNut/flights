@@ -47,21 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(app: UIApplication, url: NSURL, options: NSDictionary) -> Bool {
-        print("opening url: \(url)")
-        VKSdk.processOpen(url as URL, fromApplication: options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String)
+        VKSdk.processOpen(url as URL,
+                          fromApplication: options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String)
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         VKSdk.processOpen(url, fromApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
-        print("url: \(url)")
         return true
     }
     
     private func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         VKSdk.processOpen(url as URL?, fromApplication: sourceApplication)
-        print("url: \(url)")
-        
         return true
     }
     

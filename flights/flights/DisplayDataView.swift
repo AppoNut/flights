@@ -21,11 +21,18 @@ class DisplayDataView:  UIViewController,
     var flightDatesText: String = ""
     var flightBackDatesText: String = ""
     
+    var previousDepartureText: String = ""
+    var previousLandingText: String = ""
+    var previousFlightDatesText: String = ""
+    var previousFlightBackDatesText: String = ""
+    
     // need to get rowsCount from realm base
     var rowsCount: Int = 1
     var DDController: DisplayDataController = DisplayDataController()
     var dataToShow = [String]()
     var prepareTextToPost: String = ""
+    var vSpinner: UIView?
+    var hideSpinner: Bool = false
     
     var displayDataLogging: Logging = Logging()
     
@@ -41,7 +48,7 @@ class DisplayDataView:  UIViewController,
         self.displayDataTableView.delegate = self
         self.displayDataTableView.dataSource = self
         
-        dataToShow = DDController.getDbContent()
+        //dataToShow = DDController.getDbContent()
         
         super.viewDidLoad()
         navigationItem.title = "Flights info"
@@ -51,6 +58,11 @@ class DisplayDataView:  UIViewController,
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+        rowsCount = dataToShow.count
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
         rowsCount = dataToShow.count
         
@@ -75,10 +87,11 @@ class DisplayDataView:  UIViewController,
                                                         MMController.loadPage(src: src, dst: dst)
                                                         self.displayDataLogging.logToConsole(logMessage:
                                                             "CREATE AND PUSH DATA from display data view")
-                                                        MMController.createAndPushData()
-                                                        self.displayDataLogging.logToConsole(logMessage:
-                                                            "FINAL CALLBACK")
-                                                        self.dataToShow = self.DDController.getDbContent()
+                                                        if MMController.createAndPushData() == true {
+                                                            self.displayDataLogging.logToConsole(logMessage:
+                                                                "FINAL CALLBACK")
+                                                            self.dataToShow = self.DDController.getDbContent()
+                                                        }
                                                         
                                                         if self.dataToShow.count == 0 {
                                                             self.removeSpinner()
@@ -106,9 +119,6 @@ class DisplayDataView:  UIViewController,
                                                     }
         )
     }
-    
-    var vSpinner: UIView?
-    var hideSpinner: Bool = false
     
     func showSpinner(onView: UIView) {
         let spinner = UIView.init(frame: onView.bounds)
@@ -158,6 +168,11 @@ class DisplayDataView:  UIViewController,
             cell = UITableViewCell(style: .default, reuseIdentifier: "basicTableViewCell")
         }
         cell?.textLabel?.textAlignment = .center
+        if dataToShow[indexPath.row].count > 38 {
+            cell?.textLabel?.font = .systemFont(ofSize: 14)
+        } else if dataToShow[indexPath.row].count > 45 {
+            cell?.textLabel?.font = .systemFont(ofSize: 10)
+        }
         cell?.textLabel?.text = "\(dataToShow[indexPath.row])"
 
         return cell!

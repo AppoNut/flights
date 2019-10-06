@@ -44,9 +44,8 @@ class Flight {
         self.landingTime = landingTime
         self.price = price
     }
-    init () {
-        
-    }
+    
+    init() {}
     
     func createBase() {
         realm = try! Realm()
@@ -122,9 +121,32 @@ class Flight {
             }
         }
     }
+    
+    func isEnryExist(inputFlightId: String,
+                     inputAiportSource: String,
+                     inputAirportDest: String,
+                     inputDepartureTime: String,
+                     inputLandingTime: String,
+                     inputPrice: String) -> Bool {
+        let realm = try! Realm()
+        if realm != nil {
+            let result = realm.objects(FlightObject.self)
+            for item in result {
+                if item.flightIndex == inputFlightId &&
+                   item.aiportSource == inputAiportSource &&
+                   item.airportDest == inputAirportDest &&
+                   item.departureTime == inputDepartureTime &&
+                   item.landingTime == inputLandingTime &&
+                   item.price == inputPrice {
+                    return true
+                }
+            }
+        }
+        return false
+    }
 
     func clearDataBase() {
-        let realm = try! Realm()
+        let realm = self.getBase()
         if realm != nil {
             realm.deleteAll()
         }

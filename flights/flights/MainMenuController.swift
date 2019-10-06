@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftSoup
+import RealmSwift
 
 struct flightInfoStruct {
     var departureTime: String
@@ -48,7 +49,6 @@ class MainMenuController {
     var beginDate: String = ""
     var endDate: String = ""
     var mainMenuLogging: Logging = Logging()
-    
     
 
     func setIataSourceCode(value: String) {
@@ -164,8 +164,8 @@ class MainMenuController {
         var flightId: String = ""
         var planeId: String = ""
         var flightDirection: String = ""
-        var flightTime1: String = ""
-        var price1: String = ""
+        var foundFlightTime: String = ""
+        var foundPrice: String = ""
         var array: String = ""
 
         var concatSite = "https://pegasfly.com/Search/SearchResult?q=1000-0-"
@@ -234,7 +234,7 @@ class MainMenuController {
                         }
                         formattedString = formattedString + " " +  array
                         self.mainMenuLogging.logToConsole(logMessage: "flightTime array: [\(array)]")
-                        flightTime1 = array
+                        foundFlightTime = array
 
                         let price = try test[i].select("price").array()
                         for j in 0..<price.count {
@@ -245,7 +245,7 @@ class MainMenuController {
                         }
                         formattedString = formattedString + " " +  array
                         self.mainMenuLogging.logToConsole(logMessage: "price array: [\(array)]")
-                        price1 = array
+                        foundPrice = array
                         
                         self.mainMenuLogging.logToConsole(logMessage: "next")
                         self.mainMenuLogging.logToConsole(logMessage:
@@ -253,15 +253,15 @@ class MainMenuController {
 
                         if (departureTime != "" && landingTime != "" &&
                             flightId != "" && planeId != "" && flightDirection != "" &&
-                            flightTime1 != "" && price1 != "" && departure != "" &&
+                            foundFlightTime != "" && foundPrice != "" && departure != "" &&
                             landing != "") {
                             parsedFlights.append(flightInfoStruct(departureTime: departureTime,
                                                                   landingTime: landingTime,
                                                                   flightNum: flightId,
                                                                   planeName: planeId,
                                                                   flightDirect: flightDirection,
-                                                                  flightTime: flightTime1,
-                                                                  price: price1))
+                                                                  flightTime: foundFlightTime,
+                                                                  price: foundPrice))
                         }
                     }
                 }
@@ -373,7 +373,7 @@ class MainMenuController {
         
     }
 
-    func createAndPushData() {
+    func createAndPushData() -> Bool {
         self.mainMenuLogging.logToConsole(logMessage: "createAndPushData")
         var flight: Flight?
         
@@ -394,16 +394,29 @@ class MainMenuController {
 
         self.mainMenuLogging.logToConsole(logMessage:
             "parsedFlights.count \(parsedFlights.count) [\(parsedFlights)]")
-        for i in 0..<parsedFlights.count {
-            flight = .init(flightIndex:     parsedFlights[i].flightNum,
-                           aiportSource:    departure,
-                           airportDest:     landing,
-                           departureTime:   parsedFlights[i].departureTime,
-                           landingTime:     parsedFlights[i].landingTime,
-                           price:           parsedFlights[i].price)
-            flight!.createBase()
-            flight!.saveToBase()
+        
+        if parsedFlights.count == 0 {
+            return false
         }
+        
+        for i in 0..<parsedFlights.count {
+                flight = .init(flightIndex:     parsedFlights[i].flightNum,
+                               aiportSource:    departure,
+                               airportDest:     landing,
+                               departureTime:   parsedFlights[i].departureTime,
+                               landingTime:     parsedFlights[i].landingTime,
+                               price:           parsedFlights[i].price)
+            flight!.createBase()
+            if flight!.isEnryExist(inputFlightId: parsedFlights[i].flightNum,
+                                   inputAiportSource: departure,
+                                   inputAirportDest: landing,
+                                   inputDepartureTime: parsedFlights[i].departureTime,
+                                   inputLandingTime: parsedFlights[i].landingTime,
+                                   inputPrice: parsedFlights[i].price) == false {
+                flight!.saveToBase()
+            }
+        }
+        return true
     }
-    
+
 }
