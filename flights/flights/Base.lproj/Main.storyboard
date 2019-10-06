@@ -62,30 +62,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Откуда" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnj-VB-Btv">
-                                <rect key="frame" x="101" y="161" width="212" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Откуда" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnj-VB-Btv">
+                                <rect key="frame" x="101" y="188" width="212" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Куда" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C92-EG-USJ">
-                                <rect key="frame" x="101" y="243" width="212" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Куда" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C92-EG-USJ">
+                                <rect key="frame" x="101" y="272" width="212" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата вылета" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o89-f1-EIq">
-                                <rect key="frame" x="101" y="324" width="212" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата вылета" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o89-f1-EIq">
+                                <rect key="frame" x="101" y="356" width="212" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBN-tJ-lxi">
-                                <rect key="frame" x="101" y="498" width="212" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBN-tJ-lxi">
+                                <rect key="frame" x="101" y="524" width="212" height="42"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Найти">
@@ -95,16 +91,15 @@
                                     <segue destination="Jnc-nt-11p" kind="show" identifier="testSegue" id="2aM-y9-B5I"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата прилета" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQF-K1-Fgt">
-                                <rect key="frame" x="101" y="413" width="212" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата прилета" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQF-K1-Fgt">
+                                <rect key="frame" x="101" y="440" width="212" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viP-bc-LAF">
-                                <rect key="frame" x="180" y="583" width="55" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viP-bc-LAF">
+                                <rect key="frame" x="101" y="726" width="212" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Log Out"/>
                                 <connections>
                                     <action selector="vkLogOutUserButton:" destination="Ihp-yd-lKu" eventType="touchUpInside" id="csq-lD-izA"/>
@@ -112,6 +107,26 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="am0-vy-2HR" firstAttribute="trailing" secondItem="o89-f1-EIq" secondAttribute="trailing" constant="101" id="1GX-v2-EL1"/>
+                            <constraint firstItem="viP-bc-LAF" firstAttribute="leading" secondItem="am0-vy-2HR" secondAttribute="leading" constant="101" id="6cY-JM-Bks"/>
+                            <constraint firstItem="am0-vy-2HR" firstAttribute="trailing" secondItem="yQF-K1-Fgt" secondAttribute="trailing" constant="101" id="96b-vV-d0O"/>
+                            <constraint firstItem="am0-vy-2HR" firstAttribute="trailing" secondItem="vnj-VB-Btv" secondAttribute="trailing" constant="101" id="BYw-rn-0ao"/>
+                            <constraint firstItem="am0-vy-2HR" firstAttribute="bottom" secondItem="viP-bc-LAF" secondAttribute="bottom" constant="100" id="FT1-qi-zz0"/>
+                            <constraint firstItem="yQF-K1-Fgt" firstAttribute="leading" secondItem="am0-vy-2HR" secondAttribute="leading" constant="101" id="G1R-Ou-tpp"/>
+                            <constraint firstItem="am0-vy-2HR" firstAttribute="trailing" secondItem="BBN-tJ-lxi" secondAttribute="trailing" constant="101" id="IKC-3g-58z"/>
+                            <constraint firstItem="vnj-VB-Btv" firstAttribute="top" secondItem="am0-vy-2HR" secondAttribute="top" constant="100" id="KUH-vg-A1k"/>
+                            <constraint firstItem="yQF-K1-Fgt" firstAttribute="top" secondItem="o89-f1-EIq" secondAttribute="bottom" constant="50" id="KmL-cp-wfS"/>
+                            <constraint firstItem="BBN-tJ-lxi" firstAttribute="leading" secondItem="am0-vy-2HR" secondAttribute="leading" constant="101" id="RiF-I5-eY6"/>
+                            <constraint firstItem="C92-EG-USJ" firstAttribute="leading" secondItem="am0-vy-2HR" secondAttribute="leading" constant="101" id="TBT-49-DtI"/>
+                            <constraint firstItem="am0-vy-2HR" firstAttribute="trailing" secondItem="viP-bc-LAF" secondAttribute="trailing" constant="101" id="V6b-0o-JG0"/>
+                            <constraint firstItem="am0-vy-2HR" firstAttribute="trailing" secondItem="C92-EG-USJ" secondAttribute="trailing" constant="101" id="bNy-ng-ZGr"/>
+                            <constraint firstItem="C92-EG-USJ" firstAttribute="top" secondItem="vnj-VB-Btv" secondAttribute="bottom" constant="50" id="cCN-T9-VhP"/>
+                            <constraint firstItem="o89-f1-EIq" firstAttribute="leading" secondItem="am0-vy-2HR" secondAttribute="leading" constant="101" id="d6z-kt-zRS"/>
+                            <constraint firstItem="BBN-tJ-lxi" firstAttribute="top" secondItem="yQF-K1-Fgt" secondAttribute="bottom" constant="50" id="h1P-4p-2EA"/>
+                            <constraint firstItem="vnj-VB-Btv" firstAttribute="leading" secondItem="am0-vy-2HR" secondAttribute="leading" constant="101" id="kqM-Zc-Tf4"/>
+                            <constraint firstItem="o89-f1-EIq" firstAttribute="top" secondItem="C92-EG-USJ" secondAttribute="bottom" constant="50" id="qs0-7u-d6J"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="am0-vy-2HR"/>
                     </view>
                     <navigationItem key="navigationItem" id="6kD-uC-eG1"/>
@@ -151,10 +166,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1xq-YZ-rA8" firstAttribute="trailing" secondItem="Iu9-XY-2s9" secondAttribute="trailing" id="5Vg-qc-CtI"/>
                             <constraint firstItem="1xq-YZ-rA8" firstAttribute="leading" secondItem="Iu9-XY-2s9" secondAttribute="leading" id="DMy-jU-sZX"/>
+                            <constraint firstItem="1xq-YZ-rA8" firstAttribute="leading" secondItem="Iu9-XY-2s9" secondAttribute="leading" id="ISb-L4-t6T"/>
                             <constraint firstItem="1xq-YZ-rA8" firstAttribute="trailing" secondItem="Iu9-XY-2s9" secondAttribute="trailing" id="Lil-SV-3lh"/>
                             <constraint firstItem="Iu9-XY-2s9" firstAttribute="bottom" secondItem="1xq-YZ-rA8" secondAttribute="bottom" id="QNH-0k-55h"/>
+                            <constraint firstItem="1xq-YZ-rA8" firstAttribute="top" secondItem="Iu9-XY-2s9" secondAttribute="top" id="XNq-js-wAA"/>
                             <constraint firstItem="1xq-YZ-rA8" firstAttribute="top" secondItem="Iu9-XY-2s9" secondAttribute="top" id="hao-BC-PqU"/>
+                            <constraint firstItem="1xq-YZ-rA8" firstAttribute="bottom" secondItem="Iu9-XY-2s9" secondAttribute="bottom" id="vxb-Nc-dMo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iu9-XY-2s9"/>
                     </view>
