@@ -47,6 +47,8 @@ class MainMenuController {
     
     var beginDate: String = ""
     var endDate: String = ""
+    //var beginDate: String = ""
+    //var endDate: String = ""
     
     func setIataSourceCode(value: String) {
         iataSourceCode = value
@@ -69,14 +71,29 @@ class MainMenuController {
         landing = landingString
         date = dateString
     }
-    
+
     func passBeginEndDate(begin: String, end: String) {
-        var res = begin.split(separator: "/")
+        beginDate = begin
+        endDate = end
+        
+        if begin == "" {
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            beginDate = formatter.string(from: date)
+        }
+        if end == "" {
+            let date = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd/MM/yyyy"
+            endDate = formatter.string(from: date)
+        }
+        var res = beginDate.split(separator: "/")
         //print("res : [\(res)]")
         beginDate = String(res[2] + res[1] + res[0])
         //print("beginDate \(beginDate)")
         
-        res = end.split(separator: "/")
+        res = endDate.split(separator: "/")
         //print("res : [\(res)]")
         if endDate != "" {
             endDate = String(res[2] + res[1] + res[0])
@@ -145,6 +162,7 @@ class MainMenuController {
     }
 
     func loadPage (src: String, dst: String) {
+        print("loadPage src[\(src)] dst[\(dst)]")
         var departureTime: String = ""
         var landingTime: String = ""
         var flightId: String = ""
@@ -164,7 +182,7 @@ class MainMenuController {
         concatSite = concatSite + beginDate
         concatSite = concatSite + dst + src
         concatSite = concatSite + endDate
-        //print("concatinated string [\(concatSite)]")
+        print("concatinated string [\(concatSite)]")
 
         if let url = URL(string: concatSite) {
             do {
@@ -175,7 +193,7 @@ class MainMenuController {
                 for i in 0..<test.count {
                     let className: String = try test[i].className()
                     if className == "js-FlightRow" {
-                        //print("found something")
+                        print("found something")
                         // in-out time
                         let time2 = try test[i].getElementsByClass("SearchResult_TableCell-Time").array()
                         for j in 0..<time2.count {
@@ -207,7 +225,7 @@ class MainMenuController {
                         }
                         formattedString = formattedString + " " + array
                         flightId = array
-                        //print("flightNum array: [\(array)]")
+                        print("flightNum array: [\(array)]")
                         
                         let planeName = try test[i].getElementsByClass("SearchResult_TableCell-PlaneName").array()
                         for j in 0..<planeName.count {
@@ -215,7 +233,7 @@ class MainMenuController {
                             array = detectHtmlTagBracers(inputString: "planeName \(planeName[j])")
                         }
                         formattedString = formattedString + " " +  array
-                        //print("planeName array: [\(array)]")
+                        print("planeName array: [\(array)]")
                         planeId = array
 
                         let flightDirect = try test[i].getElementsByClass("SearchResult_TableCell-FlightDirect").array()
@@ -225,7 +243,7 @@ class MainMenuController {
                         }
                         formattedString = formattedString + " " +  array
                         flightDirection = array
-                        //print("flightDirect array: [\(array)]")
+                        print("flightDirect array: [\(array)]")
 
                         
                         let flightTime = try test[i].getElementsByClass("SearchResult_TableCell-FlightTime").array()
@@ -234,7 +252,7 @@ class MainMenuController {
                             array = detectHtmlTagBracers(inputString: "flightTime \(flightTime[j])")
                         }
                         formattedString = formattedString + " " +  array
-                        //print("flightTime array: [\(array)]")
+                        print("flightTime array: [\(array)]")
                         flightTime1 = array
 
                         //let price = try test[i].getElementsByClass("").array()
@@ -250,11 +268,11 @@ class MainMenuController {
                             //}
                         }
                         formattedString = formattedString + " " +  array
-                        //print("price array: [\(array)]")
+                        print("price array: [\(array)]")
                         price1 = array
                         
-                        //print("next")
-                        //print("result of formatted string {\(formattedString)}")
+                        print("next")
+                        print("result of formatted string {\(formattedString)}")
                         if (departureTime != "" && landingTime != "" &&
                             flightId != "" && planeId != "" && flightDirection != "" &&
                             flightTime1 != "" && price1 != "" && departure != "" &&
@@ -269,7 +287,7 @@ class MainMenuController {
                         }
                     }
                 }
-                //print(" <\(array)>")
+                print(" <\(array)>")
 
 
                 
@@ -389,6 +407,7 @@ class MainMenuController {
         print("createAndPushData")
         var flight: Flight?
         
+/*
         self.fillTestArrays()
 
         for i in 0..<testArraySize {
@@ -401,6 +420,7 @@ class MainMenuController {
             flight!.createBase()
             flight!.saveToBase()
         }
+ */
 
         print("parsedFlights.count \(parsedFlights.count) [\(parsedFlights)]")
         for i in 0..<parsedFlights.count {

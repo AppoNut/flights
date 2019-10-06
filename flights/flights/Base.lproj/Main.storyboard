@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VO6-50-Nd8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="115.84821428571428"/>
+            <point key="canvasLocation" x="139" y="120"/>
         </scene>
         <!--Main Menu View-->
         <scene sceneID="tZO-Ed-rvY">
@@ -92,7 +92,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="findFlightButton:" destination="Ihp-yd-lKu" eventType="touchUpInside" id="6Eh-aq-FmD"/>
                                     <segue destination="Jnc-nt-11p" kind="show" identifier="testSegue" id="2aM-y9-B5I"/>
                                 </connections>
                             </button>
@@ -103,6 +102,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viP-bc-LAF">
+                                <rect key="frame" x="180" y="583" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="vkLogOutUserButton:" destination="Ihp-yd-lKu" eventType="touchUpInside" id="csq-lD-izA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="am0-vy-2HR"/>

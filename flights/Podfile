@@ -6,7 +6,8 @@ target 'flights' do
   use_frameworks!
 
   # Pods for flights
-  pod "SwiftyVK" 
+  pod "SwiftyVK"
+  pod "VK-ios-sdk"
   pod "SwiftSoup"
   pod "RealmSwift"
 

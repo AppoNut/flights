@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftyVK
+import VK_ios_sdk
 
 class VkAuthorizeController {
     
@@ -22,7 +22,7 @@ class VkAuthorizeController {
     }
 
     func logout() {
-        VK.sessions.default.logOut()
+        VKSdk.forceLogout()
     }
 
 }

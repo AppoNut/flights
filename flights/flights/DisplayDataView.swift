@@ -8,9 +8,9 @@
 
 import Foundation
 import UIKit
-import SwiftyVK
+//import SwiftyVK
 
-class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, SwiftyVKSessionDelegate {
+class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate/*, SwiftyVKSessionDelegate*/ {
     
     @IBOutlet weak var displayDataTableView: UITableView!
     
@@ -42,6 +42,7 @@ class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewDidLoad()
         navigationItem.title = "Flights info"
         self.showSpinner(onView: self.view)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +68,12 @@ class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSou
                                                         MMController.createAndPushData()
                                                         print("1 FINAL CALLBACK")
                                                         self.dataToShow = self.DDController.getDbContent()
+                                                        
+                                                        if self.dataToShow.count == 0 {
+                                                            self.removeSpinner()
+                                                            self.noDataFoundAlert()
+                                                        }
+                                                        
                                                         print("qeq [\(self.dataToShow)] [\(self.dataToShow.count)]")
                                                         self.rowsCount = self.dataToShow.count
                                                         //self.rowsCount = 0
@@ -162,8 +169,20 @@ class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSou
             // cancel button
             break;
         case 1:
-            // send to wall button
-            sendPostRequest(inputText: getPreparedString())
+            let vkRelatedData = VkRelatedData.init()
+            let version = vkRelatedData.getApiVersion()
+            let user_id = vkRelatedData.getUserId()
+            let accessToken = vkRelatedData.getToken()
+            
+            /*if (vkRelatedData == nil || version == "" || user_id == "" || accessToken == "")
+            {
+                errorAlert()
+            }
+            else
+            {*/
+                // send to wall button
+                sendPostRequest(inputText: getPreparedString())
+            //}
             break;
         default:
             break;
@@ -178,25 +197,43 @@ class DisplayDataView: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.present(alert, animated: true, completion:  nil)
     }
     
+    func errorAlert() {
+        let alert = UIAlertController(title: "Notification", message: "Error occurred. Try again.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion:  nil)
+    }
+    
     func sendPostRequest(inputText: String) {
-        
+        print("sendPostRequest")
+        print("inputText [\(inputText)]")
         let vkRelatedData = VkRelatedData.init()
         let version = vkRelatedData.getApiVersion()
         let user_id = vkRelatedData.getUserId()
         let accessToken = vkRelatedData.getToken()
+        print("accessToken [\(accessToken)]")
 
-        let postModifiedString = inputText.replacingOccurrences(of: " ", with: "%20")
+        //let postModifiedString = inputText.replacingOccurrences(of: " ", with: "%20")
+        //print("postModifiedString [\(postModifiedString)]")
 
-        let url: URL = URL(string: "https://api.vk.com/method/wall.post?v=\(version)&owner_id=\(user_id)&access_token=\(accessToken)&message=\(postModifiedString)")!
+        let convertedDeparture = inputText.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+        print("convertedDeparture: [\(convertedDeparture)][\(convertedDeparture?.count)]")
+
+        
+        //let url = URL(string: urlString)
+        
+        let url: URL = URL(string: "https://api.vk.com/method/wall.post?v=\(version)&owner_id=\(user_id)&access_token=\(accessToken)&message=\(convertedDeparture!)")!
+        print("url [\(url)]")
         let session = URLSession.shared
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "POST"
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             if error == nil {
+                print("error == nil")
                 /* do nothing */
             }
             else {
+                print("error != nil")
                 /* do nothing */
             }
         }

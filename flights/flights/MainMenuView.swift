@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import VK_ios_sdk
 
 class MainMenuView: UIViewController {
     
@@ -20,11 +21,17 @@ class MainMenuView: UIViewController {
     private var datePicker2: UIDatePicker?
     var firstField = false
     var secondField = false
-
-    @IBAction func findFlightButton(_ sender: Any) {
-
+    
+    @IBAction func vkLogOutUserButton(_ sender: UIButton) {
+        VKSdk.forceLogout()
+        displayVkAuthController()
     }
     
+    func displayVkAuthController() {
+        let newController = self.storyboard?.instantiateViewController(withIdentifier: "authorizeView") as! VkAuthorizeView
+        self.present(newController, animated: true, completion: nil)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "testSegue" {
             let vc = segue.destination as? DisplayDataView

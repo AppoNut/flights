@@ -6,11 +6,13 @@ PODS:
     - Realm (= 3.13.1)
   - SwiftSoup (1.7.4)
   - SwiftyVK (3.4.0)
+  - VK-ios-sdk (1.4.6)
 
 DEPENDENCIES:
   - RealmSwift
   - SwiftSoup
   - SwiftyVK
+  - VK-ios-sdk
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -18,13 +20,15 @@ SPEC REPOS:
     - RealmSwift
     - SwiftSoup
     - SwiftyVK
+    - VK-ios-sdk
 
 SPEC CHECKSUMS:
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   SwiftyVK: 9752f07eb25c2061168ea3018c64a0512eed1f2c
+  VK-ios-sdk: 7fd48bc5aaa6b96c3197c1987eb6593f2ea67331
 
-PODFILE CHECKSUM: 70a255346a5a9759fadc1d66e6045ef6e296b2fe
+PODFILE CHECKSUM: 897dee9b9ba77cc72649c8ed92142c3dcbf2fed0
 
 COCOAPODS: 1.6.0

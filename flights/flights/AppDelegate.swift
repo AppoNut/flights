@@ -7,13 +7,12 @@
 //
 
 import UIKit
-import SwiftyVK
 import RealmSwift
+import VK_ios_sdk
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var vkDelegateReference : SwiftyVKDelegate?
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -21,33 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         try! realm.write {
             realm.deleteAll()
         }
-
         // Override point for customization after application launch.
-        vkDelegateReference = VkDelegate()
         return true
     }
-    
-    @available(iOS 9.0, *)
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
-        ) -> Bool {
-        let app = options[.sourceApplication] as? String
-        VK.handle(url: url, sourceApplication: app)
-        return true
-    }
-    
-    func application(
-        _ application: UIApplication,
-        open url: URL,
-        sourceApplication: String?,
-        annotation: Any
-        ) -> Bool {
-        VK.handle(url: url, sourceApplication: sourceApplication)
-        return true
-    }
-    
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -70,5 +46,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func application(app: UIApplication, url: NSURL, options: NSDictionary) -> Bool {
+        print("opening url: \(url)")
+        VKSdk.processOpen(url as URL, fromApplication: options["UIApplicationOpenURLOptionsSourceApplicationKey"] as! String)
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        VKSdk.processOpen(url, fromApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+        print("url: \(url)")
+        return true
+    }
+    
+    private func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        VKSdk.processOpen(url as URL?, fromApplication: sourceApplication)
+        print("url: \(url)")
+        
+        return true
+    }
+    
 }
 

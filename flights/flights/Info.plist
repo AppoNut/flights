@@ -19,10 +19,11 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
-	<array>
+    <array>
+        <string>vk</string>
+        <string>vk-share</string>
         <string>vkauthorize</string>
-        <string>vkAPP_ID_HERE</string>
-	</array>
+    </array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
